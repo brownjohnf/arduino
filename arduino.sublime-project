@@ -3,7 +3,7 @@
 	[
 		{
 			"follow_symlinks": true,
-			"path": "/Users/jfbrown/repos/arduino"
+			"path": "~/repos/arduino"
 		}
 	]
 }

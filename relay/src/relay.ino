@@ -5,6 +5,8 @@ const int k1 = 7;
 // IN2 connected to digital pin 8
 const int k2 = 8;
 
+const int p13 = 13;
+
 // button
 int btn1 = 2;
 
@@ -28,6 +30,7 @@ void setup() {
   // sets the digital pin as output
   pinMode(k1, OUTPUT);
   pinMode(k2, OUTPUT);
+  pinMode(p13, OUTPUT);
 
   // we'll read data from the button
   pinMode(btn1, INPUT);
@@ -35,6 +38,7 @@ void setup() {
   // write highs to the relays so they're off by default
   digitalWrite(k1, k1State);
   digitalWrite(k2, k2State);
+  digitalWrite(p13, LOW);
 }
 
 void loop() {
@@ -56,11 +60,19 @@ void loop() {
       // only toggle if the new btn state is high
       if (btn1State == HIGH) {
         k2State = !k2State;
+        digitalWrite(k2, k2State);
+        delay(5000);
+        digitalWrite(p13, HIGH);
+        delay(100);
+        digitalWrite(p13, LOW);
+        delay(100);
+        digitalWrite(p13, HIGH);
+        delay(100);
+        digitalWrite(p13, LOW);
       }
     }
   }
   
-  digitalWrite(k2, k2State);
   
   // save the reading
   lastBtn1State = reading;
